@@ -78,21 +78,42 @@ export default class IME extends PureComponent<iProps, IState> {
     this.setState({ value });
   };
 
-  render() {
+  handleSave = () => {
+    const { value } = this.state;
+    const blob = new Blob([value], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `chinese_notes_${new Date().toISOString().slice(0, 10)}.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+  
+render() {
     const { value, options } = this.state;
     return (
       <div className={styles.inputBox}>
+        {/* Added a toolbar for the editor controls */}
+        <div className={styles.toolbar}>
+          <h2>Chinese Pinyin Editor</h2>
+          <button className={styles.saveBtn} onClick={this.handleSave}>
+            保存文件 (Save to File)
+          </button>
+        </div>
+
         <AutoComplete
           value={value}
           options={options}
-          style={{ width: 400 }}
+          className={styles.autoCompleteWrapper}
           onSelect={this.onSelect}
           onSearch={this.getCandidatesThrottled}
           onChange={this.onChange}
         >
           <TextArea
             placeholder='Please input Chinese pinyin 请输入拼音'
-            style={{ height: 77 }}
+            className={styles.editorTextArea}
+            // Auto-size lets the editor grow, or set minRows/maxRows
+            autoSize={{ minRows: 15, maxRows: 30 }} 
           />
         </AutoComplete>
       </div>
