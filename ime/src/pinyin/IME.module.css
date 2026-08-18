@@ -1,6 +1,52 @@
 .inputBox {
-  margin: 100px auto;
-  padding: 10px;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.toolbar h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.saveBtn {
+  background-color: #1890ff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.saveBtn:hover {
+  background-color: #40a9ff;
+}
+
+/* Make Ant Design's AutoComplete span the full width */
+.autoCompleteWrapper {
+  width: 100% !important;
+}
+
+/* Enlarge the actual text area */
+.editorTextArea {
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  padding: 15px !important;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif !important;
+  border-radius: 6px !important;
 }
 
 .btn {
