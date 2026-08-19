@@ -2,10 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
   server: {
-    host: '0.0.0.0', // Crucial for Codespaces
-    port: 3000,
-    hmr: false,
-  },
-});
+    host: true, // or '0.0.0.0'
+    hmr: {
+      clientPort: 443,
+    }
+  }
+})
+
